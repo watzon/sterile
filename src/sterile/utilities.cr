@@ -12,7 +12,6 @@ module Sterile
     string.gsub(/\s+/, " ").strip
   end
 
-
   # Transliterate to ASCII and strip out any HTML/XML tags.
   #
   #   "<b>nåsty</b>".sterilize # => "nasty"
@@ -20,7 +19,6 @@ module Sterile
   def sterilize(string)
     strip_tags(transliterate(string))
   end
-
 
   # Transliterate to ASCII, downcase and format for URL permalink/slug
   # by stripping out all non-alphanumeric characters and replacing spaces
@@ -31,5 +29,6 @@ module Sterile
   def sluggerize(string, delimiter = "-")
     sterilize(string).strip.gsub(/\s+/, "-").gsub(/[^a-zA-Z0-9\-]/, "").gsub(/-+/, delimiter).downcase
   end
+
   alias_method :to_slug, :sluggerize
 end

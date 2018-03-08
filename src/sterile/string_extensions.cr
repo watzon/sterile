@@ -1,5 +1,4 @@
 module Sterile
-
   module StringExtensions
     macro included
       {% for method in Sterile.methods %}
@@ -8,9 +7,7 @@ module Sterile
       {% end %}
     end
   end
-
 end
-
 
 class String
   include Sterile::StringExtensions

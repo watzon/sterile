@@ -5,17 +5,17 @@ module Sterile
   extend self
 
   def transmogrify(string, &block)
-      result = ""
-      string.codepoints.each do |codepoint|
-        cg = codepoint >> 8
-        cp = codepoint & 0xFF
-        if cg_data = Data.codepoints_data[cg]
-          if mapping = cg_data[cp]
-            result += yield(mapping, codepoint)
-          end
+    result = ""
+    string.codepoints.each do |codepoint|
+      cg = codepoint >> 8
+      cp = codepoint & 0xFF
+      if cg_data = Data.codepoints_data[cg]
+        if mapping = cg_data[cp]
+          result += yield(mapping, codepoint)
         end
       end
-      result
+    end
+    result
   end
 
   # Transliterate Unicode [and accented ASCII] characters to their plain-text
@@ -39,5 +39,6 @@ module Sterile
       end
     end
   end
+
   alias_method :to_ascii, :transliterate
 end

@@ -16,7 +16,6 @@ module Sterile
     end
   end
 
-
   # The reverse of +encode_entities+. Turns HTML or numeric entities into
   # their Unicode counterparts.
   #
